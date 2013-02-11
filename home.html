@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="css/bootstrap-custom.css" rel="stylesheet">
+       
+       	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script type="text/javascript" src="index.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Jockey+One' rel='stylesheet' type='text/css'>
+        <title><?=$titulo?></title>
+        <!--[if IE]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    </head>
+    <body style="background:url(<?=$BACKGROUND_URL?>)">
+            <div id="container" class="container" style="margin-top:46px;">
+					<div class="row">
+						<div style="text-align:right" class="span12">
+							<?=$titulo?> - <?=$seller_geocoding?>
+						</div>
+					</div>
+                    <!--page-header-->
+                <div class="navbar navbar-inverse">
+                    <div class="navbar-inner">
+                        <div class="container">
+							<a class="brand"><?=$titulo?></a>
+                            <a class="btn btn-navbar" data-target=".navbar-responsive-collapse" data-toggle="collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </a>
+                            <div class="nav-collapse collapse navbar-responsive-collapse">
+                                <ul class="nav">
+									<li>
+										<a href="https://maps.google.com/maps?q=<?=$seller_geocoding?>&output=embed" class="iframe">Ubicación</a>
+									</li>
+                                    <li class="dropdown" >
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"> ¿Por qué confiar en <?=$seller_nickname?>? <b class="caret"></b> </a>
+                                        <div class="dropdown-menu" style="width:500px;padding:10px">
+											<div class="row-fluid">										<div class="span6" style="border-right:1px solid black">
+													<h3>Reputación</h3>
+													<h4>Nuestra reputación en MercadoLibre</h4>
+													<ul>
+													<li>
+															
+														<?=sprintf("%0.2d%%", ($seller_data['seller_reputation']['transactions']['completed']/$seller_data['seller_reputation']['transactions']['total'])*100)?> de transacciones completadas.
+													</li>
+													<li>
+														<?=sprintf("%0.2d%%", ($seller_data['seller_reputation']['transactions']['ratings']['positive'])*100)?> de votos positivos.
+													</li>
+													</ul>
+												</div><!--span6-->
+												<div class="span6">
+													<h3>Trayectoria</h3>
+													<p>
+														<a target="_blank" href="http://www.mercadolibre.com"> <img src="img/logo-mercadolibre.png" /></a>
+													</p>
+													<ul>
+													<li>
+													Operamos a través de MercadoLibre desde 
+													<?=substr($seller_data['registration_date'],0,4)?>.
+													</li>
+													<li>
+													Usuario: <a target="_blank" target="_blank" href="<?=$seller_data['permalink']?>"><?=$titulo?></a>
+													</li>
+													</ul>
+												</div><!--span6-->
+											</div><!--row-fluid-->
+										</div>
+										<!--dropdown-->
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /.nav-collapse -->
+                        </div>
+                    </div>
+                    <!-- /navbar-inner -->
+                </div>
+                 
+                <!--navbar-->
+                 
+                <!--row-->
+                <div class="row">
+                    <div class="span8" >
+						<div id="myCarousel" class="hidden-phone hidden-tablet carousel slide">
+						  <!-- Carousel items -->
+						  <div class="carousel-inner">
+						<?
+						$i = 0;
+
+						foreach($seller_destacados as $d):
+							$active = '';
+							if ($i==0) {
+								$active='active';
+							}
+							if ($i++ > 4) {
+								break;
+							}
+						
+						?>
+;							<div class="<?=$active?> item" style="max-height:310px">
+								<img style="amin-width:100%" src="<?=$d['pictures'][0]['url']?>" />
+								<div class="carousel-caption">
+									<h4><?=$d['title']?></h4>
+									<p>
+									<span class="lead">$ <?=$d['price']?></span>
+									- <?=$d['subtitle']?>
+									<a class="iframe btn btn-small btn-primary" href="<?=$d['permalink']?>">Detalle</a>.
+									</p>
+								</div><!--carousel-caption-->
+							</div><!--item-->
+						<?endforeach;?>
+
+						  </div>
+						  <!-- Carousel nav -->
+						  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+						  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+						</div>
+			<section id="masVendidos">
+                        <div class="row-fluid" style="margin-top:20px">
+                            <ul class="thumbnails" id="columnasdenoticias">
+                                <li class="span4">
+                                    <div class="thumbnail" id="c1">
+                                        <div class="dummy" style="display:none"></div>
+                                        <h3>...</h3>
+                                        <img src="" style="display:none"/>
+                                        <div class="caption">
+                                            <h4>...</h4>
+                                        </div>
+                                         
+                                        <!--caption-->
+                                    </div>
+                                     
+                                    <!--thumbnail-->
+                                    <div class="thumbnail" id="c4">
+                                        <div class="dummy" style="display:none"></div>
+                                        <h3>...</h3>
+                                        <img src="" style="display:none"/>
+                                        <div class="caption">
+                                            <h4>...</h4>
+                                        </div>
+                                         
+                                        <!--caption-->
+                                    </div>
+                                     
+                                    <!--thumbnail-->
+                                </li>
+                                 
+                                <!--span4-->
+                                <li class="span4">
+                                    <div class="thumbnail" id="c2">
+                                        <div class="dummy" style="display:none"></div>
+                                        <h3>...</h3>
+                                        <img src="" style="display:none"/>
+                                        <div class="caption">
+                                            <h4>...</h4>
+                                        </div>
+                                         
+                                        <!--caption-->
+                                    </div>
+                                     
+                                    <!--thumbnail-->
+                                    <div class="thumbnail" id="c5">
+                                        <div class="dummy" style="display:none"></div>
+                                        <h3>...</h3>
+                                        <img src="" style="display:none"/>
+                                        <div class="caption">
+                                            <h4>...</h4>
+                                        </div>
+                                         
+                                        <!--caption-->
+                                    </div>
+                                     
+                                    <!--thumbnail-->
+                                </li>
+                                 
+                                <!--span4-->
+                                <li class="span4">
+                                    <div class="thumbnail" id="c3">
+                                        <div class="dummy" style="display:none"></div>
+                                        <h3>...</h3>
+                                        <img src="" style="display:none"/>
+                                        <div class="caption">
+                                            <h4>...</h4>
+                                        </div>
+                                         
+                                        <!--caption-->
+                                    </div>
+                                     
+                                    <!--thumbnail-->
+                                    <div class="thumbnail" id="c6">
+                                        <div class="dummy" style="display:none"></div>
+                                        <h3>...</h3>
+                                        <img src="" style="display:none"/>
+                                        <div class="caption">
+                                            <h4>...</h4>
+                                        </div>
+                                         
+                                        <!--caption-->
+                                    </div>
+                                     
+                                    <!--thumbnail-->
+                                </li>
+                                 
+                                <!--span4-->
+                            </ul>
+                        </div>
+                         
+                        <!--row-fluid-->
+			</section>
+                        <div class="row-fluid" style="display:none">
+                            <ul class="thumbnails">
+                                <li class="span12">
+                                    <div class="thumbnail">
+                                        <h3>RAMSAC</h3>
+                                        <div id="mapa"></div>
+                                        <div class="caption">
+                                            <h4><a href="http://ign.gob.ar/areainstitucional/Ramsac">Estaciones
+                                                permanentes de la red RAMSAC</a></h4>
+                                            <p>
+                                                El estado de las estaciones permanentes de la Red Argentina de Monitoreo
+                                                Satelital Continuo.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                 
+                                <!--span8-->
+                            </ul>
+                        </div>
+                    </div>
+                     
+                    <!--span8-->
+                    <div class="span4">
+						<div>
+							<p class="lead">
+							A través de <a target="_blank" href="http://www.mercadolibre.com"> <img src="img/logo-mercadolibre.png" /></a><br/>
+							aceptamos:<br/>
+							<?foreach($payment_methods as $pm):?>
+							<img title = "<?=$pm['name']?>" src="<?=$pm['thumbnail']?>" />
+							<?endforeach?>
+						</div>
+						<a class="btn btn-primary" target="_blank" href="<?=$seller_data['permalink']?>"><?=$titulo?> en MercadoLibre &raquo;</a>
+
+            <hr/>
+						<h4>Más relevantes</h4>
+						<div>
+							<ul>
+							<?
+							$i = 0;
+							foreach ($seller_productos['results'] as $p):
+								if ($i++ > 4) {
+									break;
+								}
+							?>
+								<li>
+								<a class="iframe" href="<?=$p['permalink']?>"><?=$p['title']?></a>
+								(<?=$p['sold_quantity']?> vendidos)</li>
+								
+							<?endforeach?>
+							</ul>
+						</div>
+
+						<h4>Categorías</h4>
+						<div>
+						<ul>
+						<?foreach($seller_productos['available_filters'][0]['values'] as $cat) :?>
+						<li><?=$cat['name']?></li>
+						<?endforeach?>
+						</ul>
+						</div>
+
+					</div>
+					 
+					<!--span4-->
+    </div>
+     
+
+     
+    <!--row-->
+    <hr>
+    <div class="row-fluid footer">
+        <div class="span4">
+            <h3>DAT ASS</h3>
+            <p>
+                <address>
+                </address>
+            </p>
+        </div>
+
+        <div class="span4">
+            <h3>DAT ASS</h3>
+            <p>
+                <address>
+                </address>
+            </p>
+        </div>
+
+        <div class="span4">
+            <h3>DAT ASS</h3>
+            <p>
+                <address>
+                </address>
+            </p>
+        </div>
+    </div>
+     
+    <!--row-->
+</div>
+ 
+<!--container-->
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="js/fancybox/source/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+<script type="text/javascript" src="js/fancybox/source/jquery.fancybox.pack.js?v=2.1.4"></script>
+<script>
+    $(function () {
+    	goCarousel();
+    	goFancybox();
+
+		<?
+		$cats = array();
+		foreach ($seller_productos['available_filters'][0]['values'] as $cat) {
+			$cats[] = "'".$cat['id']."'";
+		}
+		?>
+		var categories = [<?=implode(',', $cats)?>];
+
+		var i =0;
+		for (i=0; i<7 ; i++ ) {
+			if (! categories[i]) {
+				break;
+			}
+			cargarArticulos('#c' + (i+1), categories[i] );
+		}
+
+        //cargarArticulos('#c6', '');
+    });
+
+    function goCarousel()
+    {
+    	$('#myCarousel').carousel({
+	});
+    }
+    function goFancybox()
+    {
+    	$('a.iframe').fancybox({'type':'iframe'})
+    }
+
+	var seller_id = '<?=$seller_id?>';
+
+    function cargarArticulos(selector, term) {
+        var seccion = $(selector);
+        var dummy = seccion.find('.dummy');
+        dummy.load('backend.php/?seller_id='+seller_id+'&c=' + term + ' .Main_content ', function () {
+            var a = {};
+            b = a;
+            a.tag = dummy.find('h1').html();
+            a.novedades = dummy.find('.node');
+            $(a.novedades).each(function (i, novedad) {
+                novedad.titulo = $(novedad).find('h2 a').html();
+                novedad.href = $(novedad).find('h2 a').attr('href');
+                novedad.imgsrc = $(novedad).find('img').attr('src');
+            });
+            // sf
+            var linkATaxonomia = $('<a href="/taxonomy/term/' + term + '">' + a.tag + '</a>');
+            seccion.find('h3').html(linkATaxonomia);
+            var c = $('<a class="iframe" href="#"></a>');
+            c.attr('href', a.novedades[0].href);
+            c.html(a.novedades[0].titulo);
+            seccion.find('h4').html('').append(c);
+            //seccion.find('h4').html(a.novedades[0].titulo);
+            seccion.find('img').attr('src', '');
+            seccion.find('img').attr('src', a.novedades[0].imgsrc);
+            if (a.novedades[0].imgsrc) {
+                seccion.find('img').show();
+            }
+            $(a.novedades).each(function (i, novedad) {
+                if (i > 2) {
+                    return;
+                }
+                if (0 == i) {
+                    return;
+                }
+                var p = $('<p class="titulosinimagen"></p>');
+                var a = $('<a class="iframe" href="#"></a>');
+                a.html(novedad.titulo);
+                a.attr('href', novedad.href);
+                p.append(a);
+                seccion.find('.caption').append(p);
+            });
+        });
+    }
+</script>
+</body>
+</html>
