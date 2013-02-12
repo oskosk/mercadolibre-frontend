@@ -1,7 +1,7 @@
 <?php
 
 $MERCADOLIBRE['seller_id']= '';
-$MERCADOLIBRE['seller_geocoding']= ''
+$MERCADOLIBRE['seller_geocoding']= '';
 $SITE_SUBTITLE = '';
 $BACKGROUND_URL = 'http://nashapobeda.info/background.jpg';
 ?>
