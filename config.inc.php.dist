@@ -4,4 +4,7 @@ $MERCADOLIBRE['seller_id']= '';
 $MERCADOLIBRE['seller_geocoding']= '';
 $SITE_SUBTITLE = '';
 $BACKGROUND_URL = 'http://nashapobeda.info/background.jpg';
+
+//es para pedir una categoria por default, aun cuando no se especifique ninguna
+$CATEGORIA_BASE = null;
 ?>
