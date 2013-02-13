@@ -7,10 +7,6 @@ if (isset($_GET['seller_id']) ) {
 	$seller_id=$_GET['seller_id'];
 }
 
-//es para pedir una categoria por default, aun cuando no se especifique ninguna
-//esto deberia pasar a config
-$categoria_base = "MLA1648";
-
 $categoria = null;
 $esCategoria = false;
 if(isset($_GET['categoria']))
@@ -20,7 +16,7 @@ if(isset($_GET['categoria']))
 	//tiene que ser una template distinta: categoria.html
 	$esCategoria = true;
 }else{
-	$categoria = $categoria_base;
+	$categoria = $CATEGORIA_BASE;
 	//en este caso se muestra el home que agrupa los productos
 	//por "sub" categorias
 	$esCategoria = false;
